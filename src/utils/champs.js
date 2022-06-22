@@ -1,9 +1,12 @@
-class Champion {
-  constructor(name, cost, origin, type) {
+export class Champion {
+  static id = 0
+  constructor(name, cost, origin, classes) {
+    this.id = Champion.id++
     this.name = name
     this.cost = cost
     this.origin = origin
-    this.type = type
+    this.classes = classes
+    this.selected = false
   }
 }
 //  Astral Dragon Guild Jade Mirage Ragewing Revel Scalescorn Shimmerscale Tempest Trainer Whispers
@@ -13,7 +16,7 @@ export default [
   new Champion('Aatrox', 1, ['Shimmerscale'], ['Warrior']),
   new Champion('Anivia', 3, ['Jade'], ['Evoker', 'Legend']),
   new Champion('Ao Shin', 10, ['Tempest','Dragon'], []),
-  new Champion('Ashe', 2, 'Jade', ['Dragonmancer', 'Swiftshot']),
+  new Champion('Ashe', 2, ['Jade'], ['Dragonmancer', 'Swiftshot']),
   new Champion('Aurelion Sol', 10, ['Astral', 'Dragon'], ['Evoker']),
   new Champion('Bard', 5, ['Guild'], ['Mystic', 'Bard']),
   new Champion('Braum', 2, ['Scalescorn'], ['Guardian']),
@@ -65,7 +68,7 @@ export default [
   new Champion('Vladimir', 1, ['Astral'], ['Mage']),
   new Champion('Volibear', 3, ['Shimmerscale'], ['Dragonmancer', 'Legend']),
   new Champion('Xayah', 4, ['Ragewing'], ['Swiftshot']),
-  new Champion('Yasuo', ['Mirage'], ['Dragonmancer', 'Warrior']),
+  new Champion('Yasuo', 5, ['Mirage'], ['Dragonmancer', 'Warrior']),
   new Champion('Yone', 2, ['Mirage'], ['Warrior']),
   new Champion('Zoe', 5, ['Shimmerscale'], ['Spellthief', 'Mage']),
 ]

@@ -1,0 +1,11 @@
+import express from 'express'
+
+const router = express.Router()
+
+router.route('/teams')
+  .get((req, res) => {
+    res.send('This is working')
+  })
+
+
+export default router

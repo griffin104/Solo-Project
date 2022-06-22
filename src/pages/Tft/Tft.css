@@ -1,0 +1,11 @@
+.wrapper {
+  display: flex
+}
+
+.left-bar {
+  flex: 1
+}
+
+.content {
+  flex: 8
+}
