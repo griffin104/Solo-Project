@@ -3,7 +3,8 @@ import champs from '../utils/champs.js'
 
 const initialState = {
   champs,
-  savedTeams: await getSavedTeams()
+  savedTeams: await getSavedTeams(),
+  currentTeam: ''
 }
 
 async function getSavedTeams() {
@@ -12,13 +13,18 @@ async function getSavedTeams() {
 }
 
 export default function champsReducer(state = initialState, action) {
-  console.log('in reducer '+action.type)
   let newState
   switch (action.type) {
 
   case actionTypes.TOGGLE_CHAMP: {
     newState = JSON.parse(JSON.stringify(state))
     newState['champs'][action.payload.id].selected = !newState['champs'][action.payload.id].selected
+    return newState
+  }
+
+  case actionTypes.UPDATE_CURRENT_TEAM: {
+    newState = JSON.parse(JSON.stringify(state))
+    newState.currentTeam = action.payload
     return newState
   }
 
@@ -39,22 +45,20 @@ export default function champsReducer(state = initialState, action) {
     for (let i = 0; i < newState.champs.length; i++) {
       newState.champs[i].selected = false
     }
-    for (let i = 0; i < action.payload.length; i++) {
-      newState.champs[action.payload[i].id].selected = true
+    for (let i = 0; i < action.payload.team.length; i++) {
+      newState.champs[action.payload.team[i].id].selected = true
     }
+    newState.currentTeam = action.payload.teamName
     return newState
   }
   
   case actionTypes.DELETE_TEAM: {
-    console.log('in correct action '+action.payload)
     newState = JSON.parse(JSON.stringify(state))
     for (let i = 0; i < newState.savedTeams.length; i++) {
       if (newState.savedTeams[i].name === action.payload) {
-        console.log('found team to delete')
         newState.savedTeams.splice(i, 1)
         i = newState.savedTeams.length
       } 
-      console.log(newState.savedTeams)
     }
     return newState
   }

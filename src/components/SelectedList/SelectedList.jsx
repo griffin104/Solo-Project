@@ -1,21 +1,35 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
+import { deleteTeamActionCreator, addTeamActionCreator, loadTeamActionCreator } from '../../actions/actions.js'
 import Champion from '../Champion/Champion.jsx'
 import SavedTeamsModal from '../SavedTeamsModal/SavedTeamsModal.jsx'
+
+
+const mapStateToProps = (state) => ({
+  savedTeams: state.champs.savedTeams
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  deleteTeam: (teamName) => dispatch(deleteTeamActionCreator(teamName)),
+  addTeam: (team) => dispatch(addTeamActionCreator(team)),
+  loadTeam: (team) => dispatch(loadTeamActionCreator(team))
+})
 
 /**
  * List of the currently selected champions.
  */
-export default function SelectedList({
+function SelectedList({
   addTeam,
   champs,
+  currentTeam,
   deleteTeam,
   loadTeam,
   savedTeams,
-  toggleChamp
+  toggleChamp,
+  updateCurrentTeam
 }) {
-  const [teamName, setTeamName] = useState('')
   const [openSavedTeamsModal, setOpenSavedTeamsModal] = useState(false)
 
   function toggleSavedTeamsModal() {
@@ -26,7 +40,7 @@ export default function SelectedList({
     const team = {name: teamName, team: champs}
     try {
       await fetch('/api/teams', {
-        method: 'POST',
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -51,7 +65,7 @@ export default function SelectedList({
       </div>
       <div className='columns mt-2'>
         <div className='is-flex columns column is-4 ml-0'>
-          <input className='input' placeholder='Team Name:' type='text' onChange={(e) => setTeamName(e.target.value)}/>
+          <input className='input' placeholder='Team Name:'  value={currentTeam} type='text' onChange={(e) => updateCurrentTeam(e.target.value)}/>
           <button className='button is-success' onClick={saveTeam}>Save Team</button>
         </div>
       </div>
@@ -70,3 +84,5 @@ SelectedList.propTypes = {
 SelectedList.defaultProps = {
   champs: []
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(SelectedList)

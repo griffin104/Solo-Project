@@ -19,3 +19,8 @@ export const loadTeamActionCreator = (team) => ({
   type: actionTypes.LOAD_TEAM,
   payload: team
 })
+
+export const updateCurrentTeamActionCreator = (teamName) => ({
+  type: actionTypes.UPDATE_CURRENT_TEAM,
+  payload: teamName
+})

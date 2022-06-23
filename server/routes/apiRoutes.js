@@ -8,7 +8,7 @@ router.route('/teams')
   .get(teamsController.getTeams, (req, res) => {
     res.json(res.locals.teams)
   })
-  .post(teamsController.saveTeam, (req, res) => {
+  .put(teamsController.saveTeam, (req, res) => {
     res.send('Post successful')
   })
   .delete(teamsController.deleteTeam, (req, res) => {

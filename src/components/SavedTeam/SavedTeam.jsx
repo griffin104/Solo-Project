@@ -42,7 +42,7 @@ export default function SavedTeam({
           {secondRow}
         </div>
         <div className='is-flex is-flex-direction-column'>
-          <button onClick={() => {loadTeam(team)}} className='button is-small is-success px-0'>Load Team</button>
+          <button onClick={() => {loadTeam({team, teamName})}} className='button is-small is-success px-0'>Load Team</button>
           <button onClick={deleteTeamOnClick} className='button is-small is-danger px-0'>Delete Team</button>
         </div>
       </div>

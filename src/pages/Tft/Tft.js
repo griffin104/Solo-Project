@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import 'bulma/css/bulma.min.css'
 
-import { toggleChampActionCreator, deleteTeamActionCreator, addTeamActionCreator, loadTeamActionCreator } from '../../actions/actions.js'
+import { toggleChampActionCreator, updateCurrentTeamActionCreator } from '../../actions/actions.js'
 import ListContainer from '../../components/ListContainer/ListContainer.jsx'
 import TraitContainer from '../../components/TraitContainer/TraitContainer.jsx'
 import SelectedList from '../../components/SelectedList/SelectedList.jsx'
@@ -12,23 +12,19 @@ import SelectedList from '../../components/SelectedList/SelectedList.jsx'
 
 const mapStateToProps = (state) => ({
   champs: state.champs.champs,
-  savedTeams: state.champs.savedTeams
+  currentTeam: state.champs.currentTeam
 })
 
 const mapDispatchToProps = (dispatch) => ({
   toggleChamp: (champName) => dispatch(toggleChampActionCreator(champName)),
-  deleteTeam: (teamName) => dispatch(deleteTeamActionCreator(teamName)),
-  addTeam: (team) => dispatch(addTeamActionCreator(team)),
-  loadTeam: (team) => dispatch(loadTeamActionCreator(team))
+  updateCurrentTeam: (teamName) => dispatch(updateCurrentTeamActionCreator(teamName))
 })
 
 function Tft({
-  addTeam,
   champs,
-  deleteTeam,
-  loadTeam,
-  savedTeams,
-  toggleChamp
+  currentTeam,
+  toggleChamp,
+  updateCurrentTeam
 }) {
   const selectedChamps = champs.filter(champ => {
     return champ.selected
@@ -42,7 +38,7 @@ function Tft({
         <TraitContainer champs={champs} />
       </div>
       <div className='is-flex-direction-column column is-11'>
-        <SelectedList loadTeam={loadTeam} addTeam={addTeam} deleteTeam={deleteTeam} savedTeams={savedTeams} champs={selectedChamps} toggleChamp={toggleChamp}/>
+        <SelectedList currentTeam={currentTeam} updateCurrentTeam={updateCurrentTeam} champs={selectedChamps} toggleChamp={toggleChamp}/>
         <ListContainer champs={unselectedChamps} toggleChamp={toggleChamp} />
       </div>
     </div>
