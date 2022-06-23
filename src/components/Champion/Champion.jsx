@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import './Champion.css'
+import ivern from '../../images/ivern.png'
 
 /**
  * Card for displaying information about the champion.
@@ -14,11 +15,24 @@ export default function Champion({
   origin,
 }) {
   return (
-    <div onClick={handleClick} className='champion'>
-      <h3>{name}</h3>
-      <p>{cost}</p>
-      <p>{origin}</p>
-      <p>{classes}</p>
+    <div onClick={handleClick} className='card mr-2 my-2'>
+      <div className='card-content'>
+        <div className='media'>
+          <div className='media-left'>
+            <figure className='image is-48x48'>
+              <img src={ivern} />
+            </figure>
+          </div>
+          <div className='mediacontent'>
+            <p className='has-text-weight-bold'>{name}</p>
+          </div>
+        </div>
+        <div className='content'>
+          <p><strong>Cost:</strong> {cost}</p>
+          <p><strong>Origin:</strong> {origin}</p>
+          <p><strong>Class:</strong> {classes}</p>
+        </div>
+      </div>
     </div>
   )
 }

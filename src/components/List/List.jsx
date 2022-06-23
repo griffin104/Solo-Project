@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Champion from '../Champion/Champion.jsx'
-import './List.css'
 
 /**
  * Filtered list of unselected champions.
@@ -18,7 +17,7 @@ export default function List({
     )
   })
   return (
-    <div className='championList'>
+    <div className='is-flex is-flex-wrap-wrap'>
       {displayedList}
     </div>
   )

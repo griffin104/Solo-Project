@@ -1,10 +1,8 @@
-.champion {
-  width: 150px;
-  height: 150px;
-  border: 1px solid black;
-  text-align: center;
+.card {
+  width: 200px;
+  height: 200px;
 }
 
-.selected {
-  background-color: green;
+.content {
+  line-height: .7;
 }

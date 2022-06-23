@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './TraitContainer.css'
-
 /**
  * Container used for displaying the traits for the currently active team.
  */
@@ -41,7 +39,7 @@ export default function TraitContainer({
   })
 
   return (
-    <div className='traits'>
+    <div className='is-flex-direction-column has-text-centered'>
       <h2>Current Traits</h2>
       {traitsAsArray.map((trait, i) => (
         <p key={`trait${i}`}>{trait[0]}: {trait[1]}</p>
