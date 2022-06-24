@@ -1,4 +1,4 @@
-List component example:
+SavedTeam component example:
 
 ```js
 import { Champion } from '../../utils/champs'
@@ -11,8 +11,12 @@ const champs = [
   new Champion('Xayah', 4, ['Ragewing'], ['Swiftwing'])
 ]
 
-function fakeToggleChamp(champ) {
-  alert(`You clicked on ${champ.name}!`)
+function fakeDeleteTeam() {
+  alert(`You deleted the team!`)
 }
-<List list={champs} toggleChamp={fakeToggleChamp} />
+
+function fakeLoadTeam() {
+  alert(`You loaded the team!`)
+}
+<SavedTeam team={champs} teamName='Example Team' deleteTeam={fakeDeleteTeam} loadTeam={fakeLoadTeam}/>
 ```

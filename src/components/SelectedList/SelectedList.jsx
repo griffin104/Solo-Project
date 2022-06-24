@@ -37,8 +37,9 @@ function SelectedList({
   }
 
   async function saveTeam() {
-    const team = {name: teamName, team: champs}
+    const team = {name: currentTeam, team: champs}
     try {
+      console.log('jhgsdf')
       await fetch('/api/teams', {
         method: 'PUT',
         headers: {
@@ -65,7 +66,7 @@ function SelectedList({
       </div>
       <div className='columns mt-2'>
         <div className='is-flex columns column is-4 ml-0'>
-          <input className='input' placeholder='Team Name:'  value={currentTeam} type='text' onChange={(e) => updateCurrentTeam(e.target.value)}/>
+          <input className='input' placeholder='Team Name:'  autoComplete='off' value={currentTeam} type='text' onChange={(e) => updateCurrentTeam(e.target.value)}/>
           <button className='button is-success' onClick={saveTeam}>Save Team</button>
         </div>
       </div>

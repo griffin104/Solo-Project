@@ -52,6 +52,10 @@ export default function SavedTeam({
 }
 
 SavedTeam.propTypes = {
+  /** Deletes the selected team */
+  deleteTeam: PropTypes.func.isRequired,
+  /** Loads the selected team */
+  loadTeam: PropTypes.func.isRequired,
   /** Array of the champions on the team */
   team: PropTypes.array,
   /** Name of the team */

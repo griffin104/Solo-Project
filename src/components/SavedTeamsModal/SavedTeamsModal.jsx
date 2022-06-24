@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Champion } from '../../utils/champs.js'
 import SavedTeam from '../SavedTeam/SavedTeam.jsx'
 
 export default function SavedTeamsModal({
@@ -11,8 +10,8 @@ export default function SavedTeamsModal({
   savedTeams
 }) {
 
-  const teams = savedTeams.map(team => {
-    return <SavedTeam teamName={team.name} team={team.team} loadTeam={loadTeam} deleteTeam={deleteTeam}/>
+  const teams = savedTeams.map((team, i) => {
+    return <SavedTeam key={`savedTeam${i}`} teamName={team.name} team={team.team} loadTeam={loadTeam} deleteTeam={deleteTeam}/>
   })
 
   return (
@@ -34,5 +33,15 @@ export default function SavedTeamsModal({
 
 SavedTeamsModal.propTypes = {
   /** Function used to close the modal */
-  close: PropTypes.func
+  close: PropTypes.func,
+  /** Deletes the selected team */
+  deleteTeam: PropTypes.func.isRequired,
+  /** Loads the selected team */
+  loadTeam: PropTypes.func.isRequired,
+  /** Array of the saved teams */
+  savedTeams: PropTypes.array
+}
+
+SavedTeamsModal.defaultProps = {
+  savedTeams: []
 }

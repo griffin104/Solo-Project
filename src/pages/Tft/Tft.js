@@ -48,6 +48,8 @@ function Tft({
 Tft.propTypes = {
   /** List of champions */
   champs: PropTypes.array.isRequired,
+  /** Name of the current team */
+  currentTeam: PropTypes.string.isRequired,
   /** Toggles the selected value of the champion */
   toggleChamp: PropTypes.func.isRequired
 }

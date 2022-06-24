@@ -7,7 +7,7 @@
   "scripts": {
     "start": "concurrently \"webpack-dev-server --hot --mode development\" \"nodemon ./server/server.js\"",
     "build": "webpack --mode production",
-    "styleguide": "styleguidist server",
+    "styleguide": "styleguidist server --config styleguide.config.cjs",
     "styleguide:build": "styleguidist build"
   },
   "author": "",

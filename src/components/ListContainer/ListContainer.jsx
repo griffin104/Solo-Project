@@ -31,7 +31,7 @@ export default function ListContainer({
     <div className='is-flex is-flex-direction-column has-text-centered'>
       <h2 className='is-size-3'>Unselected Champs</h2>
       <div className='is-align-self-flex-start mb-2'>
-        <input className='input is-info' onChange={(e) => {filterChamps(e)}} placeholder='Search: ' type='text' name='search' />
+        <input className='input is-info' autoComplete='off' onChange={(e) => {filterChamps(e)}} placeholder='Search: ' type='text' name='search' />
       </div>
       <List list={filteredChamps} toggleChamp={toggleChamp}/>
     </div>
