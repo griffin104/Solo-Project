@@ -76,10 +76,22 @@ function SelectedList({
 }
 
 SelectedList.propTypes = {
+  /** Saves the currently selected team */
+  addTeam: PropTypes.func,
   /** The list of champions to be displayed */
   champs: PropTypes.arrayOf(PropTypes.object),
+  /** The name of the current team */
+  currentTeam: PropTypes.string,
+  /** Deletes the selected team */
+  deleteTeam: PropTypes.func,
+  /** Loads the selected team */
+  loadTeam: PropTypes.func,
+  /** List of the currently saved teams */
+  savedTeams: PropTypes.array,
   /** Toggles the selected value of the champion */
-  toggleChamp: PropTypes.func.isRequired
+  toggleChamp: PropTypes.func.isRequired,
+  /** Updates the current team name */
+  updateCurrentTeam: PropTypes.func.isRequired
 }
 
 SelectedList.defaultProps = {

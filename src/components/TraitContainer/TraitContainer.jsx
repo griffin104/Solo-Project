@@ -50,7 +50,7 @@ export default function TraitContainer({
 }
 
 TraitContainer.propTypes = {
-  /** List of champions */
+  /** List of selected champions */
   champs: PropTypes.array
 }
 

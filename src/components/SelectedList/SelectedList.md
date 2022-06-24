@@ -1,7 +1,7 @@
-SavedTeamsModal component example:
+SelectedList example component:
 
 ```js
-import { Champion } from '../../utils/champs.js'
+/* import { Champion } from '../../utils/champs.js'
 const champs = [
   new Champion('Xayah', 4, ['Ragewing'], ['Swiftwing']),
   new Champion('Xayah', 4, ['Ragewing'], ['Swiftwing']),
@@ -26,18 +26,11 @@ const teams = [
   }
 ];
 
-function fakeDeleteTeam() {
-  alert(`You deleted the team!`)
+function fakeToggleChamp(champ) {
+  alert(`You clicked on ${champ.name}!`)
 }
+  <SelectedList addTeam={() => alert('Team Added!')} champs={champs} currentTeam={'Example Team Name'}
+  deleteTeam={() => alert('Team Deleted!')} loadTeam={() => alert('Team Loaded!')} savedTeams={teams}
+  toggleChamp={fakeToggleChamp} updateCurrentTeam={() => alert('Please implement redux into this :(')}/> */
 
-function fakeLoadTeam() {
-  alert(`You loaded the team!`)
-}
-
-const [open, setOpen] = React.useState(false);
-<div>
-  <button className='button is-large is-link' onClick={() => {setOpen(!open)}}>Open Modal</button>
-  {open ? <SavedTeamsModal close={() => {setOpen(!open)}} loadTeam={fakeLoadTeam}
-  deleteTeam={fakeDeleteTeam} savedTeams={teams}/> : null}
-</div>
 ```
